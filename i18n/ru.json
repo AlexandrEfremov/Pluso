@@ -1,0 +1,9 @@
+{
+    "@metadata": {
+        "authors": [
+            "Alexandr Efremov"
+        ]
+    },
+	"pluso": "Поделиться",
+    "pluso-desc": "Добавляет [http://www.pluso.ru социальные кнопки] в левое меню и заголовок страницы."
+}
