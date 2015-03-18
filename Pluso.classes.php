@@ -6,12 +6,6 @@
  * @ingroup Extensions
  */
 class Pluso {
-	/* Register parser hook */
-	public static function PlusoHeaderTag( &$parser ) {
-		$parser->setHook( 'pluso', __CLASS__.'::parserHook' );
-		return true;
-	}
-	
 	/* Function for article header toolbar */
 	public static function PlusoHeader( &$article, &$outputDone, &$pcache ) {
 		global $wgOut, $wgPlusoUserID, $wgPlusoHeader, $wgPlusoMain, $wgPlusoBackgroundHeader, $wgPlusoThemeHeader, $wgPlusoServicesHeader;
