@@ -47,5 +47,4 @@ $wgExtensionMessagesFiles['Pluso'] = $dir . 'Pluso.i18n.php';
 $wgAutoloadClasses['Pluso'] = $dir . 'Pluso.classes.php';
 // Register parser hook
 $wgHooks['ArticleViewHeader'][] = 'Pluso::PlusoHeader';
-$wgHooks['ParserFirstCallInit'][] = 'Pluso::PlusoHeaderTag';
 $wgHooks['SkinBuildSidebar'][] = 'Pluso::PlusoSidebar';
