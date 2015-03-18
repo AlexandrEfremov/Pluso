@@ -7,7 +7,7 @@
  *
  * @author Alexandr Efremov
  * @license GPL v2 or later
- * @version 2.1.0
+ * @version 0.2
  */
 // Check environment
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -32,7 +32,7 @@ $wgPlusoServicesHeader		= "vkontakte,odnoklassniki,facebook,twitter,google,moimi
 $wgExtensionCredits['social'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Pluso',
-	'version'        => '0.0.1',
+	'version'        => '0.2',
 	'author'         => '[https://www.mediawiki.org/wiki/User:Alexandr_Efremov Alexandr Efremov]',
 	'description'    => 'Добавляет [http://www.pluso.ru Pluso социальные кнопки] в правое меню и заголовок страницы',
 	'descriptionmsg' => 'pluso-desc',
