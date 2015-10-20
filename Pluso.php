@@ -44,7 +44,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgMessagesDirs['Pluso'] = $dir . '/i18n';
 $wgExtensionMessagesFiles['Pluso'] = $dir . 'Pluso.i18n.php';
 // Register auto load for the special page class
-$wgAutoloadClasses['Pluso'] = $dir . 'Pluso.classes.php';
+$wgAutoloadClasses['Pluso'] = $dir . 'Pluso.class.php';
 // Register parser hook
 $wgHooks['ArticleViewHeader'][] = 'Pluso::PlusoHeader';
 $wgHooks['SkinBuildSidebar'][] = 'Pluso::PlusoSidebar';
