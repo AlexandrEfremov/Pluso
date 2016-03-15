@@ -63,7 +63,7 @@ class Pluso {
 					var h=d[g](\'body\')[0];
 					h.appendChild(s);
 			}})();</script>
-			<div data-user="'.$wgwgPlusoUserID.'" class="pluso" data-background="'.$wgPlusoBackgroundSidebar.'" data-options="small,square,multiline,horizontal,nocounter,theme='.$wgPlusoThemeSidebar.'" data-services="'.$wgPlusoServicesSidebar.'"></div>';
+			<div data-user="'.$wgPlusoUserID.'" class="pluso" data-background="'.$wgPlusoBackgroundSidebar.'" data-options="small,square,multiline,horizontal,nocounter,theme='.$wgPlusoThemeSidebar.'" data-services="'.$wgPlusoServicesSidebar.'"></div>';
 		return true;
 	}
 }
