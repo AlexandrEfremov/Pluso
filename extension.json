@@ -1,0 +1,43 @@
+{
+	"name": "Pluso",
+	"version": "0.3",
+	"author": [
+		"Alexandr Efremov"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:Pluso",
+	"descriptionmsg": "pluso-desc",
+	"license-name": "GPL-2.0+",
+	"type": "other",
+	"AutoloadClasses": {
+		"Pluso": "Pluso.class.php"
+	},
+	"config": {
+		"PlusoUserID":"",
+		"PlusoSidebar": true,
+		"PlusoBackgroundSidebar": "transparent",
+		"PlusoThemeSidebar": "04",
+		"PlusoServicesSidebar": "vkontakte,odnoklassniki,facebook,twitter,google,moimir",
+		"PlusoHeader": true,
+		"PlusoMain": false,
+		"PlusoBackgroundHeader": "transparent",
+		"PlusoThemeHeader": "08",
+		"PlusoServicesHeader": "vkontakte,odnoklassniki,facebook,twitter,google,moimir"
+	},
+	"ExtensionMessagesFiles": {
+		"Pluso": "Pluso.i18n.php"
+	},
+	"Hooks": {
+		"ArticleViewHeader": [
+			"Pluso::PlusoHeader"
+		],
+		"SkinBuildSidebar": [
+			"Pluso::PlusoSidebar"
+		]
+	},
+	"MessagesDirs": {
+		"Pluso": [
+			"i18n"
+		]
+	},
+	"manifest_version": 1
+}
