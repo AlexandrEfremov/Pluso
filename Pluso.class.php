@@ -18,10 +18,10 @@ class Pluso {
 			return true;
 		}
 		
-		/* Output Pluso header in <h1> */
-		$wgOut->addHTML('
-			<script type="text/javascript">
-			(function() {
+		$wgOut->setIndicators([
+			'тест'=>'<div class="pluso" data-user="'.$wgPlusoUserID.'" data-background="'.$wgPlusoBackgroundHeader.'" data-options="small,square,line,horizontal,counter,theme='.$wgPlusoThemeHeader.'" data-services="'.$wgPlusoServicesHeader.'"></div>'
+		]);
+		$wgOut->addHTML('<script type="text/javascript">(function() {
 				if (window.pluso)if (typeof window.pluso.start == "function") return;
 				if (window.ifpluso==undefined) { window.ifpluso = 1;
 					var d = document, s = d.createElement("script"), g = "getElementsByTagName";
@@ -30,12 +30,7 @@ class Pluso {
 					var h=d[g]("body")[0];
 						h.appendChild(s);
 				}
-			})();
-			jQuery(document).ready(function() {
-				var title = jQuery("#firstHeading").html();
-				jQuery("#firstHeading").html(title + \'<div data-user="'.$wgPlusoUserID.'" class="pluso" style="float: right;right: 10px;" data-background="'.$wgPlusoBackgroundHeader.'" data-options="medium,round,line,horizontal,counter,theme='.$wgPlusoThemeHeader.'" data-services="'.$wgPlusoServicesHeader.'"></div>\'); 
-			});</script>'
-		);
+			})();</script>');
 		
 		return true;
 	}
