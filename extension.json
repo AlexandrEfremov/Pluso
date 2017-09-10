@@ -18,7 +18,7 @@
 		"PlusoOptionsSidebar": ["small","square","multiline","horizontal","nocounter"],
 		"PlusoThemeSidebar": "04",
 		"PlusoServicesSidebar": "vkontakte,odnoklassniki,facebook,twitter,google,moimir",
-		"PlusoHeader": false,
+		"PlusoHeader": true,
 		"PlusoMain": false,
 		"PlusoBackgroundHeader": "transparent",
 		"PlusoOptionsHeader": ["small","square","line","horizontal","counter"],
