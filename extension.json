@@ -1,6 +1,6 @@
 {
 	"name": "Pluso",
-	"version": "0.3",
+	"version": "0.4",
 	"author": [
 		"Alexandr Efremov"
 	],
@@ -15,11 +15,13 @@
 		"PlusoUserID":"",
 		"PlusoSidebar": true,
 		"PlusoBackgroundSidebar": "transparent",
+		"PlusoOptionsSidebar": ["small","square","multiline","horizontal","nocounter"],
 		"PlusoThemeSidebar": "04",
 		"PlusoServicesSidebar": "vkontakte,odnoklassniki,facebook,twitter,google,moimir",
-		"PlusoHeader": true,
+		"PlusoHeader": false,
 		"PlusoMain": false,
 		"PlusoBackgroundHeader": "transparent",
+		"PlusoOptionsHeader": ["small","square","line","horizontal","counter"],
 		"PlusoThemeHeader": "08",
 		"PlusoServicesHeader": "vkontakte,odnoklassniki,facebook,twitter,google,moimir"
 	},
