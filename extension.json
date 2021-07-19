@@ -1,6 +1,6 @@
 {
 	"name": "Pluso",
-	"version": "0.4",
+	"version": "0.5",
 	"author": [
 		"Alexandr Efremov"
 	],
@@ -30,10 +30,10 @@
 	},
 	"Hooks": {
 		"ArticleViewHeader": [
-			"Pluso::PlusoHeader"
+			"Pluso::onArticleViewHeader"
 		],
 		"SkinBuildSidebar": [
-			"Pluso::PlusoSidebar"
+			"Pluso::onSkinBuildSidebar"
 		]
 	},
 	"MessagesDirs": {
