@@ -1,6 +1,6 @@
 {
 	"name": "Pluso",
-	"version": "0.5",
+	"version": "0.6",
 	"author": [
 		"Alexandr Efremov"
 	],
@@ -19,7 +19,7 @@
 		"PlusoThemeSidebar": "04",
 		"PlusoServicesSidebar": "vkontakte,odnoklassniki,facebook,twitter,google,moimir",
 		"PlusoHeader": true,
-		"PlusoMain": false,
+		"PlusoMain": true,
 		"PlusoBackgroundHeader": "transparent",
 		"PlusoOptionsHeader": ["small","square","line","horizontal","counter"],
 		"PlusoThemeHeader": "08",
@@ -34,7 +34,17 @@
 		],
 		"SkinBuildSidebar": [
 			"Pluso::onSkinBuildSidebar"
+		],
+		"BeforePageDisplay": [
+			"Pluso::onBeforePageDisplay"
 		]
+	},
+	"ResourceModules": {
+		"ext.Pluso": {
+			"localBasePath": "modules/ext.Pluso",
+			"remoteExtPath": "Pluso/modules/ext.Pluso",
+			"packageFiles": [ "core.js" ]
+		}
 	},
 	"MessagesDirs": {
 		"Pluso": [
