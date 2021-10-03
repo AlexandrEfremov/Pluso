@@ -12,7 +12,6 @@
 		"Pluso": "Pluso.class.php"
 	},
 	"config": {
-		"PlusoUserID":"",
 		"PlusoSidebar": true,
 		"PlusoBackgroundSidebar": "transparent",
 		"PlusoOptionsSidebar": ["small","square","multiline","horizontal","nocounter"],

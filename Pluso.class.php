@@ -13,7 +13,7 @@ class Pluso {
     }
 	/* Function for article header toolbar */
 	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
-		global $wgOut, $wgPlusoUserID, $wgPlusoHeader, $wgPlusoMain, $wgPlusoBackgroundHeader, $wgPlusoThemeHeader, $wgPlusoServicesHeader, $wgPlusoOptionsHeader;
+		global $wgOut, $wgPlusoHeader, $wgPlusoMain, $wgPlusoBackgroundHeader, $wgPlusoThemeHeader, $wgPlusoServicesHeader, $wgPlusoOptionsHeader;
 		
 		# Check if page is in content namespace and the setting to enable/disable article header tooblar either on the main page or at all
 		if ( !MWNamespace::isContent( $article->getTitle()->getNamespace() )
@@ -28,7 +28,7 @@ class Pluso {
 
 	/* Function for sidebar*/
 	public static function onSkinBuildSidebar( $skin, &$bar ) {
-		global $wgOut, $wgPlusoUserID, $wgPlusoSidebar, $wgPlusoBackgroundSidebar, $wgPlusoThemeSidebar, $wgPlusoServicesSidebar,$wgPlusoOptionsSidebar;
+		global $wgOut, $wgPlusoSidebar, $wgPlusoBackgroundSidebar, $wgPlusoThemeSidebar, $wgPlusoServicesSidebar,$wgPlusoOptionsSidebar;
 		
 		# Check setting to enable/disable sidebar portlet
 		if ( !$wgPlusoSidebar ) {
