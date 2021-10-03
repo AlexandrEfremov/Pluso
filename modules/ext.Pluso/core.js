@@ -1,13 +1,11 @@
 (function (w, d) {
-	var prot = /^((https|chrome-extension):)/i.test(w.location.protocol) ? "http" : "http",
-		u = prot + "://share.pluso.ru",
-		uid = "1374374902291",
+	var u = mw.config.get( 'wgServer' ) + mw.config.get( 'wgScriptPath' ) + "/extensions/Pluso/modules/ext.Pluso",//,
 		tags = "getElementsByTagName",
 		h = d[tags]("body")[0],
 		b = d.documentElement,
-		db = d.body,
-		compat = 0;
-
+		db = d.body;
+		//compat = 0;
+	
 	function js(url, id, callback) {
 		if (typeof id == "function") {
 			callback = id;
@@ -81,17 +79,7 @@
 	function osize(opt) {
 		return opt.small == 1 ? "small" : opt.medium == 1 ? "medium" : "big"
 	}
-
-	function getImg(url) {
-		var img;
-		try {
-			img = new Image();
-		} catch (ignore) {
-			img = document.createElement("img");
-		}
-		img.src = url;
-	}
-
+	
 	function rnd(min, max) {
 		if (!max) {
 			max = min;
@@ -234,35 +222,30 @@
 	if (w.pluso && typeof w.pluso.start == "function") return;
 	if (!w.pluso) w.pluso = {};
 	pluso.cnt = 0;
-	pluso.uid = uid;
 	if (!w.pluso.lang) w.pluso.lang = {};
 	pluso.lang["ru"] = {
 		close: "Закрыть",
 		get: "Кнопки увеличивают трафик",
 		share: "Поделитесь с друзьями!",
-		bookmark: "Скопируйте и добавьте эту ссылку в Закладки",
-		buy: "Купить"
+		bookmark: "Скопируйте и добавьте эту ссылку в Закладки"
 	};
 	pluso.lang["ua"] = {
 		close: "Закрити",
 		get: "Отримаєте свої кнопки",
 		share: "Поділитеся з друзями!",
-		bookmark: "Скопіюйте та додайте цю посилання в Закладки",
-		buy: "Купити"
+		bookmark: "Скопіюйте та додайте цю посилання в Закладки"
 	};
 	pluso.lang["by"] = {
 		close: "Зачыніць",
 		get: "Атрымаеце свае кнопкі",
 		share: "Падзяліцеся з сябрамі!",
-		bookmark: "Скапіюйце і дадайце гэтую спасылку ў Закладкі",
-		buy: "Купіць"
+		bookmark: "Скапіюйце і дадайце гэтую спасылку ў Закладкі"
 	};
 	pluso.lang["en"] = {
 		close: "Close",
 		get: "Get Your Buttons",
 		share: "Share With Friends!",
 		bookmark: "Copy the link and paste to your Bookmarks",
-		buy: "Buy",
 		titles: {
 			vkontakte: "VKontakte",
 			odnoklassniki: "Odnoklassniki",
@@ -275,9 +258,7 @@
 			googlebookmark: "Google Bookmarks",
 			yahoo: "Yahoo Bookmarks",
 			moemesto: "MoeMesto",
-			bookmark: "Add to Favorite",
-			email: "Send by E-mail",
-			print: "Print"
+			bookmark: "Add to Favorite"
 		}
 	};
 	pluso.css = [
@@ -549,12 +530,6 @@
 			["", ".pluso-tip.pluso-bottom-arrow:after"], "top:-6px;border-color:#447b36 transparent;border-width:0px 6px 6px 6px"
 		],
 		[
-			["", "@keyframes pluso-market-animate"], "0% { opacity:1 } 50%{ opacity:.3} 100% { opacity:1}"
-		],
-		[
-			["", "@-webkit-keyframes pluso-market-animate"], "0% { opacity:1 } 50%{ opacity:.3} 100% { opacity:1}"
-		],
-		[
 			["", ".pluso-overlay-background"], 'height:100%;width:100%;position:fixed;left:0;top:0;z-index:999999999;background-color: rgb(0, 0, 0);background-color: rgba(0, 0, 0, 0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";padding:0;margin:0;'
 		],
 		[
@@ -630,68 +605,45 @@
 		["odnoklassniki", "Одноклассники", 4, 4, "#f4960f"],
 		["facebook", "Facebook", 1, 1, "#39579a"],
 		["twitter", "Twitter", 2, 2, "#00abf0"],
-		["google", "Google+", 7, 5, "#be3308"],
+		//["google", "Google+", 7, 5, "#be3308"],
 		["moimir", "Мой Мир@Mail.Ru", 8, 7, "#2f69a1"],
 		["pinterest", "Pinterest", 6, 17, "#ce1d1f"],
 		["livejournal", "LiveJournal", 9, 6, "#6899c4"],
 		["tumblr", "Tumblr", 3, 22, "#2e4e67"],
 		["liveinternet", "LiveInternet", 10, 8, "#27819b"],
-		["springpad", "Springpad", 11, 19, "#f7b42f"],
+		//["springpad", "Springpad", 11, 19, "#f7b42f"],
 		["stumbleupon", "StumbleUpon", 12, 20, "#ed4713"],
 		["myspace", "mySpace", 13, 15, "#1d1d1d"],
 		["formspring", "Formspring.me", 14, 13, "#4693d7"],
 		["blogger", "Blogger", 15, 9, "#f58220"],
-		["digg", "Digg", 16, 11, "#165495"],
+		//["digg", "Digg", 16, 11, "#165495"],
 		["surfingbird", "Surfingbird", 17, 21, "#14aef8"],
-		["bobrdobr", "БобрДобр", 18, 24, "#763c34"],
-		["readability", "Readability", 19, 18, "#9d0000"],
+		//["bobrdobr", "БобрДобр", 18, 24, "#763c34"],
+		//["readability", "Readability", 19, 18, "#9d0000"],
 		["instapaper", "Instapaper", 20, 14, "#6b6b6b"],
 		["evernote", "Evernote", 21, 12, "#75bb1e"],
-		["delicious", "Delicious", 26, 10, "#003bd8"],
+		//["delicious", "Delicious", 26, 10, "#003bd8"],
 		["vkrugu", "В Кругу Друзей", 25, 25, "#e95e12"],
-		["pinme", "Pinme", 27, 16, "#f47a24"],
-		["yandex", "Я.ру", 28, 23, "#e70505"],
-		["yazakladki", "Яндекс.Закладки", 29, 29, "#ff0000"],
-		["moikrug", "МойКруг", 30, 30, "#c71b1a"],
+		//["pinme", "Pinme", 27, 16, "#f47a24"],
+		//["yandex", "Я.ру", 28, 23, "#e70505"],
+		//["yazakladki", "Яндекс.Закладки", 29, 29, "#ff0000"],
+		//["moikrug", "МойКруг", 30, 30, "#c71b1a"],
 		["googlebookmark", "Google закладки", 31, 31, "#0e41f4"],
-		["yahoo", "Yahoo закладки", 32, 32, "#7b0099"],
+		//["yahoo", "Yahoo закладки", 32, 32, "#7b0099"],
 		["moemesto", "МоёМесто", 33, 33, "#3a5d82"],
-		["memori", "Memori.ru", 34, 34, "#fd2668"],
-		["juick", "Juick", 36, 35, "#b98337"],
+		//["memori", "Memori.ru", 34, 34, "#fd2668"],
+		//["juick", "Juick", 36, 35, "#b98337"],
 		["linkedin", "LinkedIn", 37, 36, "#0072ab"],
-		["webdiscover", "WebDiscover", 39, 37, "#8bc514"],
+		//["webdiscover", "WebDiscover", 39, 37, "#8bc514"],
 		["bookmark", "В закладки", 22, 26, "#de157d"],
-		["email", "Отправить на email", 23, 27, "#5f32b0"],
-		["print", "Печатать", 24, 28, "#0fae96"],
-		["webmoney", "Webmoney события", 45, 39, "#007dc6"],
-		["misterwong", "Мистер Вонг", 44, 40, "#ab0315"],
-		["friendfeed", "Friend Feed", 43, 41, "#5e92d1"],
-		["market", "Pluso Маркет", false, 38]
-	];
-	pluso.buy = ["cart", "dollar", "bulb", "quest", "tag"];
-	pluso.tips = [
-		["Распродажа!", "Это может быть Вам интересно!", "Лучшие товары со скидкой!", "Спецпредложения от интернет-магазинов!", "Самые продаваемые товары!", "Любые товары по лучшим ценам!", "Популярные товары по лучшим ценам!", "Популярные товары со скидкой!", "Товары для комфортной жизни со скидкой!", "Самые востребованные товары со скидкой!", "Новинки от интернет-магазинов!", "Лучшие цены от интернет-магазинов!", "Бестселлеры от интернет-магазинов!", "Бестселлеры по лучшим ценам!", "Новинки по лучшим ценам!"], {
-			big: {
-				top: "top:-38px;left:10px",
-				left: "top:9px;right:5px",
-				bottom: "top:57px;left:10px"
-			},
-			medium: {
-				top: "top:-38px;left:2px",
-				left: "top:0px;right:5px",
-				bottom: "top:42px;left:2px"
-			},
-			small: {
-				top: "top:-38px;left:-3px",
-				left: "top:-5px;right:5px",
-				bottom: "top:32px;left:-3px"
-			}
-		}
+		//["email", "Отправить на email", 23, 27, "#5f32b0"],
+		//["print", "Печатать", 24, 28, "#0fae96"],
+		//["webmoney", "Webmoney события", 45, 39, "#007dc6"],
+		//["misterwong", "Мистер Вонг", 44, 40, "#ab0315"],
+		//["friendfeed", "Friend Feed", 43, 41, "#5e92d1"]
 	];
 	pluso.services = false;
 	pluso.sets = {};
-	pluso.counter = {};
-	pluso.counters = {};
 	pluso.sepcounters = {};
 	pluso.advs = false;
 	pluso.user = false;
@@ -700,7 +652,7 @@
 		medium: 31,
 		big: 42
 	};
-	pluso.tabbed = ["livejournal", "liveinternet", "stumbleupon", "bobrdobr", "evernote", "instapaper", "digg"];
+	pluso.tabbed = ["livejournal", "liveinternet", "stumbleupon", "bobrdobr", "evernote", "instapaper"];
 	pluso.defaults = {
 		options: {
 			horizontal: 1,
@@ -758,7 +710,7 @@
 			var value = elem.getAttribute("data-" + key);
 			if (value) obj[key] = value
 		});
-		if (ep.params.url.split("://").length < 2) ep.params.url = prot + "://" + ep.params.url;
+		if (ep.params.url.split("://").length < 2) ep.params.url = "https://" + ep.params.url;
 		if (ep.params.url.indexOf("#") == -1 && ep.params.url.split("/").length < 4) ep.params.url += "/";
 		var opt = [],
 			uniq = [],
@@ -806,15 +758,10 @@
 				}
 			}
 			css.push("." + uniq + " .pluso-wrap a{ background-image:url(" + u + "/img/pluso-like/" + p.join("/") + "/" + o["theme"] + ".png) }");
-			for (var i = 0; i < pluso.buy.length; i++) {
-				css.push("." + uniq + " .pluso-wrap a.pluso-market-" + pluso.buy[i] + ", ." + uniq + " .pluso-wrap a.pluso-market-" + pluso.buy[i] + "-animate{ background:url(" + u + "/img/pluso-like/" + p.join("/") + "/market.png) -" + i * x + "px 0}");
-				css.push("." + uniq + " .pluso-wrap a.pluso-market-" + pluso.buy[i] + "-animate{animation: pluso-market-animate 3s linear infinite alternate;-webkit-animation: pluso-market-animate 3s linear infinite alternate;}")
-			}
 		}
 		if (!pluso.services) {
 			pluso.services = {};
 			css.push(".pluso-box a b{ background-image:url(" + u + "/img/pluso-like/round/small/04.png) }");
-			css.push(".pluso-box a.pluso-market b{ background:url(" + u + "/img/pluso-like/round/small/market.png) -21px 0}");
 			for (var i = 0, l = pluso.titles.length; i < l; i++) {
 				p = pluso.titles[i];
 				pluso.services[p[0]] = i;
@@ -846,9 +793,8 @@
 					pluso.sets[uniq].push(p[0])
 				}
 			}
-		html.push('<a href="' + prot + '://pluso.ru/" class="pluso-more"></a>');
+		html.push('<a href="#" class="pluso-more"></a>');
 		html.push("</span>");
-		if (o.counter > 0) html.push('<span class="pluso-counter"><b>' + (pluso.counter[ep.params.url] || "0") + "</b></span>");
 		html.push("</div>");
 		if (!pluso.sets[uniq]) pluso.sets[uniq] = [];
 		return {
@@ -879,48 +825,9 @@
 			var t = e.target || e.srcElement;
 			if (t.tagName == "B") t = t.parentNode;
 			if (t.tagName == "A") {
-				if (t.className.substr(0, 12) == "pluso-market") {
-					pluso.process("market", elem);
-					var o = document.createElement("div");
-					o.className = "pluso-overlay-background";
-					var oc = document.createElement("a");
-					oc.href = "#close";
-					oc.className = "pluso-overlay-close";
-					oc.innerHTML = "&times;";
-					oc.onclick = function (e) {
-						o.parentNode.removeChild(o);
-						return false
-					};
-					o.appendChild(oc);
-					var box = document.createElement("div");
-					box.className = "pluso-overlay-box";
-					html = [];
-					html.push('<div><a target="_blank" href="//market.pluso.ru?newmarket" style="margin:0 0 0 20px;padding:0;text-decoration:none"><img src="' + u + '/img/pluso-like/logo-market.png" border="0" width="300" height="30" alt="Pluso Маркет"></a><a target="_blank" href="//market.pluso.ru/" style="float:right;margin:3px 20px 0 0;text-align:right;font:bold normal 20px/26px Arial;text-decoration:none;color:#848484;width:550px">Лучшие товары по самым выгодным ценам!</a></div>');
-					html.push('<ul id="pluso-market-placeholder"></ul>');
-					box.innerHTML = html.join("");
-					o.appendChild(box);
-					o.onclick = function (e) {
-						if (!e) var e = window.event;
-						var t = e.target || e.srcElement;
-						if (t.className == "pluso-overlay-background") o.parentNode.removeChild(o)
-					};
-					document.body.insertBefore(o, document.body.childNodes[0]);
-					if (!t.clicked) {
-						t.clicked = 1;
-						var ou = "http://offers.pluso.ru/offers/" + elem.pluso.params.user + "/" + uid + "?callback=pluso.market&" + Math.random();
-						js(ou, function () {
-							t.clicked = 0
-						})
-					}
-				} else switch (t.className) {
+				switch (t.className) {
 					case "pluso-more":
 						pluso.more(pointed(e), elem);
-						break;
-					case "pluso-promo":
-					case "pluso-logo":
-					case "pluso-go":
-						pluso.process(t.className.substring(6), elem);
-						return true;
 						break;
 					case "pluso-close":
 						elem.box.style.display = "none";
@@ -938,9 +845,6 @@
 		if (!tt) return false;
 		if (tt.css) styled(tt.css);
 		elem.innerHTML = tt.html;
-		if (!((elem.counter = elements("pluso-counter", elem)).length && (elem.counter = elem.counter[0][tags]("b")).length && (elem.counter = elem.counter[0]))) {
-			elem.counter = d.createElement("b")
-		}
 		if (elem.pluso.options.sepcounter == "1") {
 			for (var i in elem.pluso.services) {
 				if (pluso.sepcounters[elem.pluso.services[i]]) {
@@ -950,17 +854,9 @@
 						serviceCounter.title = pluso.sepcounters[s];
 						serviceCounter.inner = numk(pluso.sepcounters[s])
 					}
-				} else {
-					pluso.process("counter", elem, "&soc=1");
-					break
 				}
 			}
 		}
-		if (!pluso.counter[elem.pluso.params.url]) pluso.counter[elem.pluso.params.url] = 0;
-		elem.counter.title = pluso.counter[elem.pluso.params.url];
-		elem.counter.innerHTML = numk(pluso.counter[elem.pluso.params.url]);
-		if (!pluso.counters[elem.pluso.params.url]) pluso.counters[elem.pluso.params.url] = [];
-		pluso.counters[elem.pluso.params.url].push(elem.counter);
 		elem.onclick = pluso.click(elem, 0);
 		var more = elements("pluso-more", elem)[0];
 		more.onmouseover = function (e) {
@@ -993,53 +889,16 @@
 				var params = "";
 				if (el[ei].pluso.options.sepcounter) params += "&soc=1";
 				if (!pluso.cnt++) params += "&first=1";
-				pluso.process("counter", el[ei], params);
-				if (el[ei].getAttribute("data-user")) pluso.user = el[ei].getAttribute("data-user")
 			}
 		}
-		setTimeout(getImg(prot + "://counter.yadro.ru/hit;PLUSO?r" + escape(document.referrer) + ((typeof (screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) + ";h" + escape(document.title.substring(0, 80)) + ";1"), 1);
-		setTimeout(function () {
-			var s = document.createElement("script"),
-				h = document.getElementsByTagName("head")[0];
-			s.async = 1;
-			s.src = "//kitbit.net/kb.js";
-			s.type = "text/javascript";
-			if (h) h.appendChild(s)
-		}, 10);
-	};
-	pluso.share_pinterest = function () {
-		js("http://assets.pinterest.com/js/pinmarklet.js?r=" + Math.random() * 99999999)
-	};
-	pluso.share_pinme = function () {
-		js("http://st.pinme.ru/js/pinbutton.js?r=" + Math.random() * 99999999)
-	};
-	pluso.share_readability = function () {
-		js("http://www.readability.com/bookmarklet/save.js?r=" + Math.random() * 99999999)
-	};
-	pluso.share_print = function () {
-		window.print()
-	};
-	pluso.share_bookmark = function (ep) {
-		if (typeof window.sidebar == "object" && typeof window.sidebar.addPanel == "function") {
-			window.sidebar.addPanel(ep.params.title, ep.params.url, "")
-		} else if (typeof window.external == "object" && !window.chrome) {
-			window.external.AddFavorite(ep.params.url, ep.params.title)
-		} else prompt("Скопируйте и добавьте эту ссылку в Закладки", ep.params.url)
-	};
-	pluso.share_email = function (ep) {
-		var link = "mailto:?Subject=" + ep.params.title + "&body=" + encodeURIComponent(ep.params.url) + "%0A";
-		window.open(link, "mailto")
 	};
 	pluso.params = function (elem) {
-		return "u=" + encode(elem.pluso.params.url) + (pluso.screenWidth && pluso.screenHeight ? "&w=" + pluso.screenWidth + "&h=" + pluso.screenHeight : "") + "&ref=" + encode(d.referrer) + (elem.pluso.params.user > 0 ? "&user=" + encode(elem.pluso.params.user) : "") + "&uid=" + uid + "&k=" + pluso.randomString(16)
+		return "u=" + encode(elem.pluso.params.url) + (pluso.screenWidth && pluso.screenHeight ? "&w=" + pluso.screenWidth + "&h=" + pluso.screenHeight : "") + "&ref=" + encode(d.referrer) + (elem.pluso.params.user > 0 ? "&user=" + encode(elem.pluso.params.user) : "") + "&k=" + pluso.randomString(16)
 	};
 	pluso.share = function (t, elem, menu) {
 		var sharer = t.className.substring(6),
 			share = pluso["share_" + sharer],
 			sharelink = pluso.sharelink(sharer, elem, menu);
-		pluso.counter[elem.pluso.params.url] += 1;
-		elem.counter.title = pluso.counter[elem.pluso.params.url];
-		elem.counter.innerHTML = numk(pluso.counter[elem.pluso.params.url]);
 		if (elem.pluso.options.sepcounter == "1") {
 			var serviceClass = t.className;
 			if (!pluso.sepcounters[sharer]) pluso.sepcounters[sharer] = 0;
@@ -1070,8 +929,6 @@
 			var div = d.createElement("div"),
 				html = [];
 			div.className = "pluso-box";
-			html.push('<a href="' + u + '/?new_a" target="_blank" class="pluso-logo">+PLUSO</a>');
-			html.push('<a href="' + u + '/?new_a" target="_blank" class="pluso-go">' + lang(elem, "get") + "</a>");
 			html.push('<a href="#close" title="' + lang(elem, "close") + '" class="pluso-close">&times;</a>');
 			html.push('<div class="pluso-list">');
 			for (var i = 0, l = pluso.titles.length; i < l; i++) {
@@ -1080,7 +937,6 @@
 				html.push('<a href="' + elem.pluso.params.url.replace(/"/g, "&quot;") + '" title="' + pt + '" class="pluso-' + p[0] + '"' + (p[0] == "bookmark" ? ' rel="sidebar"' : "") + "><b></b>" + pt + "</a>")
 			}
 			var bn = Math.random() > .5 ? "1" : "2";
-			html.push('<a class="pluso-promo" style="display:block;width:100%;height:200px;margin:0;padding:0;background:url(' + u + "/img/pluso-like/promo_" + bn + '.png) center center no-repeat" href="http://watson.pluso.com/?new' + (bn == 1 ? "chromeaddon" : "music") + '" target="_blank"></a>');
 			html.push("</div>");
 			div.innerHTML = html.join("");
 			div.onmouseover = function (ev) {
@@ -1117,125 +973,129 @@
 			elem.box = div;
 			d[tags]("body")[0].appendChild(div)
 		}
-		pluso.process("menu", elem)
+		//pluso.process("menu", elem)
 	};
 	pluso.sharelink = function (sharer, elem, menu) {
 		var k = d.getSelection,
 			y = w.getSelection,
 			x = d.selection;
 		var s = y ? y() : k ? k() : x ? x.createRange().text : 0;
-		return u + "/process?act=share&" + pluso.params(elem) + "&type=" + encode(sharer) + "&t=" + encode(elem.pluso.params.title) + "&s=" + encode(s || elem.pluso.params.description) + (elem.pluso.params.image ? "&img=" + encode(elem.pluso.params.image) : "") + (menu ? "&menu=1" : "")
-	};
-	pluso.process = function (action, elem, params) {
-		js("+process?act=" + action + "&" + pluso.params(elem) + (params || ""))
-	};
-	pluso.setCounter = function (c, url, buy, counters, advType) {
-		var el = elements("pluso");
-		if (typeof buy != "undefined") {
-			for (var i = 0, l = el.length; i < l; i++)
-				if (el[i].className.split(" ").indexOf("pluso-skip") == -1 && el[i].getAttribute("data-user") !== null) {
-					var w = elements("pluso-wrap", el[i]);
-					var a = w[0].firstChild || false;
-					var o = el[i].pluso.options;
-					if (a && a.className.substr(0, 12) != "pluso-market") {
-						var m = d.createElement("a");
-						m.className = "pluso-market-" + (buy.style || "bulb") + (buy.animate ? "-animate" : "");
-						m.href = "//market.pluso.ru/";
-						a.parentNode.insertBefore(m, a);
-						if (el[i].pluso.options.sepcounter) m.style["margin-bottom"] = "0px";
-						if (buy.pos && buy.pos != "hide" && !buy.hide) {
-							var t = document.createElement("span");
-							t.innerHTML = '<span style="position:absolute;z-index:2;top:0;left:0;bottom:auto;right:auto"><span class="pluso-tip pluso-' + buy.pos + '-arrow" style="' + pluso.tips[1][osize(o)][buy.pos] + '">' + pluso.tips[0][rnd(pluso.tips[0].length - 1)] + "</span></span>";
-							t.onclick = function () {
-								m.click();
-								return false
-							};
-							el[i].insertBefore(t, el[i].firstChild)
-						}
-					}
-				}
+		switch (encode(sharer)) {
+			case 'vkontakte':
+				return "http://vk.com/share.php?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title) + "&description=" + encode(s || elem.pluso.params.description) + "&image=" + encode(elem.pluso.params.image)
+			break;
+			case 'odnoklassniki':
+				return "https://connect.ok.ru/offer?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title) + "&description=" + encode(s || elem.pluso.params.description) + "&imageUrl=" + encode(elem.pluso.params.image)
+			break;
+			case 'facebook':
+				return "https://www.facebook.com/sharer.php?src=sp&u=" + encode(elem.pluso.params.url) + "&t=" + encode(elem.pluso.params.title)
+			break;
+			case 'twitter':
+				return "https://twitter.com/share?url=" + encode(elem.pluso.params.url) + "&text=" + encode(elem.pluso.params.title)
+			break;//"
+			case 'moimir':
+				return "https://connect.mail.ru/share?share_url=" + encode(elem.pluso.params.url)
+			break;
+			case 'pinterest':
+				return "http://pinterest.com/pin/create/button/?url=" + encode(elem.pluso.params.url) + "&media=" + encode(elem.pluso.params.image) + "&description=" + encode(s || elem.pluso.params.description)
+			break;
+			case 'livejournal':
+				return "https://www.livejournal.com/update.bml?subject=" + encode(elem.pluso.params.title) + "&event=" + encode(elem.pluso.params.url)
+			break;
+			case 'tumblr':
+				return "https://www.tumblr.com/widgets/share/tool/preview?shareSource=legacy&canonicalUrl=&url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title)
+			break;
+			case 'liveinternet':
+				return "http://www.liveinternet.ru/journal_post.php?action=l_add&url=" + encode(elem.pluso.params.url) + "&cntitle=" + encode(elem.pluso.params.title)
+			break;
+			//case 'springpad':
+			//	return ""
+			//break;
+			case 'stumbleupon':
+				return "https://mix.com/mixit?su=submit&url=" + encode(elem.pluso.params.url)
+			break;
+			case 'myspace':
+				return "https://myspace.com/Modules/PostTo/Pages/default.aspx?u=" + encode(elem.pluso.params.url)
+			break;
+			case 'formspring':
+				return "https://www.formspring.me/share?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title)
+			break;
+			case 'blogger':
+				return "https://www.blogger.com/blog-this.g?t&u=" + encode(elem.pluso.params.url) + "&n=" + encode(elem.pluso.params.title) + "&pli=1"
+			break;
+			//case 'digg':
+			//	return ""
+			//break;
+			case 'surfingbird':
+				return "surfingbird.ru/share?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title)
+			break;
+			//case 'bobrdobr':
+			//	return ""
+			//break;
+			//case 'readability':
+			//	return ""
+			//break;
+			case 'instapaper':
+				return "https://www.instapaper.com/edit_url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title)
+			break;
+			case 'evernote':
+				return "https://www.evernote.com/clip.action?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title)
+			break;
+			//case 'delicious':
+			//	return ""
+			//break;
+			case 'vkrugu':
+				return "https://vkrugudruzei.ru/x/button?url=" + encode(elem.pluso.params.url)
+			break;
+			//case 'pinme':
+			//	return ""
+			//break;
+			//case 'yandex':
+			//	return "https://my.ya.ru/posts_share_link.xml?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title) + "&body=" + encode(s || elem.pluso.params.description)
+			//break;
+			//case 'yazakladki':
+			//	return ""
+			//break;
+			//case 'moikrug':
+			//	return ""
+			//break;
+			case 'googlebookmark':
+				return "https://www.google.com/bookmarks/mark?op=edit&output=popup&bkmk=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.title) + "&annotation=&hl=ru&service=bookmarks"
+			break;
+			//case 'yahoo':
+			//	return ""
+			//break;
+			case 'moemesto':
+				return "https://moemesto.ru/post/?url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.url)
+			break;
+			//case 'memori':
+			//	return ""
+			//break;
+			//case 'juick':
+			//	return ""
+			//break;
+			case 'linkedin':
+				return "https://www.linkedin.com/shareArticle?mini=true&url=" + encode(elem.pluso.params.url) + "&title=" + encode(elem.pluso.params.url)
+			break;
+			//case 'webdiscover':
+			//	return ""
+			//break;
+			//case 'bookmark':
+			//	return ""
+			//break;
+			//case 'webmoney':
+			//	return ""
+			//break;
+			//case 'instagram':
+			//	return ""
+			//break;
+			//case 'print':
+			//	return ""
+			//break;
+			//case 'email':
+			//	return "mailto:?subject=" + encode(elem.pluso.params.title) + "&body=Check out this site:" + encode(elem.pluso.params.url)
+			//break;
 		}
-		if (typeof counters != "undefined") {
-			pluso.sepcounters = counters;
-			for (var i = 0, l = el.length; i < l; i++) {
-				if (el[i].className.split(" ").indexOf("pluso-skip") == -1 && el[i].pluso && el[i].pluso.options.sepcounter == 1) {
-					for (var s in pluso.sepcounters) {
-						var serviceEl = elements("pluso-" + s, el[i])[0];
-						if (serviceEl) {
-							var serviceCounter = serviceEl.parentNode.getElementsByTagName("b")[0];
-							serviceCounter.title = pluso.sepcounters[s];
-							serviceCounter.innerHTML = numk(pluso.sepcounters[s])
-						}
-					}
-				}
-			}
-		}
-		if (!url) url = w.location.href.split("#")[0];
-		pluso.counter[url] = parseInt(c);
-		var cnt = pluso.counters[url];
-		if (cnt && cnt.length) {
-			var n = numk(pluso.counter[url]);
-			for (var i = 0; i < cnt.length; i++) {
-				cnt[i].title = pluso.counter[url];
-				cnt[i].innerHTML = n
-			}
-		}
-		if (typeof pluso_counter == "function") pluso_counter(c, url);
-		var du = false;
-		if (elements("pluso")[0]) du = elements("pluso")[0].getAttribute("data-user");
-		if (!pluso.advs && advType) {
-			var adv = [];
-			try {
-				adv = JSON.parse(advType)
-			} catch (e) {
-				adv.push(advType)
-			}
-			pluso.advs = adv;
-			if (adv.length) {
-				var requestSrc = "http://ads.betweendigital.com/adj?s=95614&h=400&w=240",
-					divForScript = document.createElement("div");
-				divForScript.innerHTML = '<iframe id="pluso-ads-iframe" scrolling=no frameborder=0></iframe>';
-				document.getElementsByTagName("body")[0].appendChild(divForScript);
-				iframe = document.getElementById("pluso-ads-iframe");
-				if (iframeDocument = iframe.contentDocument) {
-					iframe.style.width = "240px";
-					iframe.style.height = "400px";
-					iframe.style.margin = 0;
-					iframe.style.padding = 0;
-					iframe.style.position = "fixed";
-					iframe.style.bottom = 0;
-					iframe.style.right = 0;
-					iframe.style.zIndex = "999999";
-					var closeButton = document.createElement("div");
-					closeButton.setAttribute("id", "ads_close");
-					closeButton.style.fontFamily = "Arial, sans-serif";
-					closeButton.style.fontSize = "10px";
-					closeButton.style.textAlign = "right";
-					closeButton.style.position = "fixed";
-					closeButton.style.zIndex = "999999";
-					closeButton.style.right = "0px";
-					closeButton.style.bottom = "400px";
-					closeButton.style.width = "240px";
-					closeButton.style.color = "#bbb";
-					closeButton.style.cursor = "pointer";
-					closeButton.style.zIndex = "999999";
-					closeButton.innerHTML = "&#1047;&#1040;&#1050;&#1056;&#1067;&#1058;&#1068;&nbsp;[&#1061;]&nbsp;";
-					closeButton.addEventListener("click", function () {
-						divForScript.style.display = "none"
-					});
-					divForScript.appendChild(closeButton);
-					iframeDocument.write('<script type="text/javascript" src="' + requestSrc + '"></script>')
-				}
-			}
-		}
-	};
-	pluso.market = function (items) {
-		var html = [];
-		for (var i = 0, l = items.length; i < l; i++) {
-			var it = items[i];
-			html.push('<li><a href="' + it.url + '" target="_blank"><span><img src="//offers.pluso.ru/img/' + it.image + '.png" border="0" alt="" height="150"></span><strong>' + it.title + "</strong><em>" + (it.price * 1).toString() + " руб.<u>Из рук в руки</u></em><b>Купить!</b></a></li>")
-		}
-		document.getElementById("pluso-market-placeholder").innerHTML = html.join("")
 	};
 	pluso.randomString = function (length) {
 		var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".split("");
@@ -1247,29 +1107,6 @@
 			str += chars[rnd(chars.length)]
 		}
 		return str
-	};
-	pluso.refreshCounter = function (url) {
-		if (!url) return;
-		var cnts = {};
-		cnts[url] = [];
-		for (var i in pluso.counters) {
-			for (var j in pluso.counters[i]) {
-				var cnt = pluso.counters[i][j];
-				cnt.innerText = "0";
-				cnts[url].push(cnt)
-			}
-		}
-		pluso.counters = cnts;
-		var cnt = {};
-		cnt[url] = 0;
-		pluso.counter = cnt;
-		pluso.defaults.params.url = url;
-		pluso.cnt = 0;
-		el = elements("pluso");
-		for (var i = 0; i < el.length; i++) {
-			el[i].pluso = cloned(pluso.defaults);
-			pluso.process("counter", el[i], !pluso.cnt++ ? "&first=1" : "")
-		}
 	};
 	ready(function () {
 		pluso.start();
