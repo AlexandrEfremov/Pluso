@@ -1,10 +1,6 @@
 # SETTINGS
 The following variables may be reset in your LocalSettings.php file.
 
-$wgPlusoUserID
-- not required, but is recommended for viewing statistics 
-- more info: http://share.pluso.ru/faq
-
 $wgPlusoSidebar
 - Enables or disables the display of the widget Pluso in the sidebar
 
