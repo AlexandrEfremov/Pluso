@@ -1,6 +1,6 @@
 {
 	"name": "Pluso",
-	"version": "0.7",
+	"version": "0.8",
 	"author": [
 		"Alexandr Efremov"
 	],
@@ -8,6 +8,9 @@
 	"descriptionmsg": "pluso-desc",
 	"license-name": "GPL-2.0+",
 	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.35.10"
+	},
 	"AutoloadClasses": {
 		"Pluso": "Pluso.class.php"
 	},
