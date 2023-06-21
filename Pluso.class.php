@@ -16,7 +16,7 @@ class Pluso {
 		global $wgOut, $wgPlusoHeader, $wgPlusoMain, $wgPlusoBackgroundHeader, $wgPlusoThemeHeader, $wgPlusoServicesHeader, $wgPlusoOptionsHeader;
 		
 		# Check if page is in content namespace and the setting to enable/disable article header tooblar either on the main page or at all
-		if ( !MWNamespace::isContent( $article->getTitle()->getNamespace() )
+		if ( !NamespaceInfo::isContent( $article->getTitle()->getNamespace() )
 			|| !$wgPlusoHeader
 			|| ( $article->getTitle()->equals( Title::newMainPage() ) && !$wgPlusoMain )
 		) {
